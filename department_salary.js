@@ -64,10 +64,14 @@ function calculateEmployeeSalary(employee) {
 let sumOfDepartment = thisDepartment.employees.reduce ((total, employee) => { return total += calculateEmployeeSalary(employee);},0) //reduce iterating over array 
 return sumOfDepartment} ; 
 
-// example call
-console.log(calculateDepartmentSalary(company.departments, "Engineering")) //expected output is 330000
+console.log(calculateDepartmentSalary(company.departments, "Engineering"))// expected output: 330000
 
-
+// Create a Function to Calculate the Total Salary for All Departments
+function calculateCompanySalary (company) {
+let companyTotalSalaries = company.departments.reduce((total, department) => { return total + calculateDepartmentSalary(company.departments, department.departmentName); }, 0)//reduce to iterate over the array and use function to provide total
+return companyTotalSalaries }; 
+//calling it:
+console.log(calculateCompanySalary(company)); //expected output 580000
 
 
 
